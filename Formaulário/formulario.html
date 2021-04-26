@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Formulário</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="CSS/bootstrap.css">
+    </head>
+    <body>
+        <script type="text/javascript">
+            function validar(){
+                var form = document.getElementById("form")
+                var nome = form.nome.value
+                var snome = form.snome.value
+                var email = form.email.value
+                var rg = form.rg.value
+
+                if(form.nome.value == ""){
+                    alert("Campo Nome Vazio!");                   
+                    return false
+                }
+                if(form.snome.value == ""){
+                    alert("Campo Sobrenome Vazio!");
+                    return false
+                }
+                if(document.forms[0].email.value=="" || document.forms[0].email.value.indexOf('@')==-1 || document.forms[0].email.value.indexOf('.')==-1){
+                    alert("E-mail inválido!");
+                    return false;
+                }
+                if(form.rg.value == ""){
+                    alert("Campo RG Vazio!");
+                    return false
+                }
+            }
+
+            function maskCPF(){
+                var cpf = document.getElementById('cpf')
+                if (cpf.value.length == 3 || cpf.value.length == 7){
+                    cpf.value += "."
+                } else if (cpf.value.length == 11){
+                    cpf.value += "-"
+                }
+            }
+        </script>
+        <div class="container">
+        <h2 class="display-4">Formulário</h2>
+        <hr>
+        <form src="#" id="form" name="form">
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input class="form-control" type="text" id="nome" name="nome" placeholder="digite seu Nome">
+            </div>
+
+            <div class="form-group">
+                <label for="snome">Sobrenome:</label>
+                <input class="form-control" type="text" id="snome" name="snome" placeholder="digite seu Sobrenome">
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input class="form-control" type="text" id="email" name="email" placeholder="digite seu E-mail">
+            </div>
+
+            <div class="form-group">
+                <label for="rg">RG:</label>
+                <input class="form-control" type="text" name="rg" placeholder="Digite seu RG" id="rg" >               
+            </div>
+
+            <div class="form-group">
+                <label for="cpf">CPF:</label>
+                <input class="form-control" type="text" name="cpf" placeholder="Digite seu CPF" id="cpf" maxlength="14" onkeyup="maskCPF()">
+            </div>
+            <button onclick="validar()" class="btn btn-primary">Enviar</button>
+        </form>
+        <hr>
+        </div>
+    </body>
+</html>
